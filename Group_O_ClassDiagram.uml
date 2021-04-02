@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="593.0" y="149.0">edu.sdccd.cisc191.o.server.Food</node>
+    <node x="284.0" y="409.0">edu.sdccd.cisc191.o.client.Client</node>
+    <node x="690.0" y="686.0">edu.sdccd.cisc191.o.User</node>
+    <node x="896.0" y="686.0">edu.sdccd.cisc191.o.UI</node>
+    <node x="0.0" y="686.0">edu.sdccd.cisc191.o.server.Server</node>
+    <node x="430.0" y="686.0">edu.sdccd.cisc191.o.History</node>
+    <node x="0.0" y="0.0">edu.sdccd.cisc191.o.CustomerResponse</node>
+    <node x="558.0" y="409.0">edu.sdccd.cisc191.o.DailyLog</node>
+    <node x="318.0" y="149.0">edu.sdccd.cisc191.o.server.Ingredient</node>
+    <node x="477.25" y="0.0">edu.sdccd.cisc191.o.server.Database</node>
+    <node x="230.0" y="686.0">edu.sdccd.cisc191.o.client.App</node>
+    <node x="0.0" y="409.0">edu.sdccd.cisc191.o.CustomerRequest</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="edu.sdccd.cisc191.o.server.Food" target="edu.sdccd.cisc191.o.server.Database">
+      <point x="0.0" y="-82.5" />
+      <point x="720.0" y="124.0" />
+      <point x="635.5" y="124.0" />
+      <point x="52.75" y="49.5" />
+    </edge>
+    <edge source="edu.sdccd.cisc191.o.server.Ingredient" target="edu.sdccd.cisc191.o.server.Database">
+      <point x="0.0" y="-82.5" />
+      <point x="445.5" y="124.0" />
+      <point x="530.0" y="124.0" />
+      <point x="-52.75" y="49.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7462154942119323" x="425.0" y="102.61873508353221" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
