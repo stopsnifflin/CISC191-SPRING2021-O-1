@@ -1,11 +1,11 @@
 package edu.sdccd.cisc191.o.server;
 
-import edu.sdccd.cisc191.o.CustomerRequest;
-import edu.sdccd.cisc191.o.CustomerResponse;
+
 import edu.sdccd.cisc191.o.DailyLog;
 import edu.sdccd.cisc191.o.Request;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -13,7 +13,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class History {
-    private ArrayList<DailyLog> logHistory;
+    private ArrayList<DailyLog> logHistory = new ArrayList<>();
 
     private ServerSocket serverSocket;
     private Socket clientSocket;
@@ -29,7 +29,8 @@ public class History {
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
             Request request = Request.fromJSON(inputLine);
-            out.println(DailyLog.toJSON(getLog(request.getLogEntryDay())));
+            DailyLog response = getLog(request.getLogEntryDay());
+            out.println(DailyLog.toJSON(response));
         }
     }
 
@@ -44,5 +45,23 @@ public class History {
 
     public void viewLogs(){
 
+    }
+
+    public void stop() throws IOException {
+        in.close();
+        out.close();
+        clientSocket.close();
+        serverSocket.close();
+    }
+
+
+    public static void main(String[] args) {
+        History server = new History();
+        try {
+            server.start(8888);
+            server.stop();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }

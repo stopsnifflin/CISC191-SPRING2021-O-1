@@ -40,6 +40,7 @@ public class Client {
         out.close();
         clientSocket.close();
     }
+
     public static void main(String[] args) {
         Client client = new Client();
         try {
