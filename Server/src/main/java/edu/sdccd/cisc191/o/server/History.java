@@ -4,12 +4,9 @@ package edu.sdccd.cisc191.o.server;
 import edu.sdccd.cisc191.o.DailyLog;
 import edu.sdccd.cisc191.o.Request;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
+import java.io.*;
+
 import java.util.ArrayList;
 
 public class History {
@@ -21,6 +18,9 @@ public class History {
     private BufferedReader in;
 
     public void start(int port) throws Exception {
+        logHistory.add(new DailyLog());
+        logHistory.add(new DailyLog());// adding temp logs
+
         serverSocket = new ServerSocket(port);
         clientSocket = serverSocket.accept();
         out = new PrintWriter(clientSocket.getOutputStream(), true);
@@ -36,9 +36,10 @@ public class History {
 
 
     public DailyLog getLog(int entryAtDay){
-        logHistory.add(new DailyLog()); //For now add an empty dailylog to logHistory
+       //For now add an empty dailylog to logHistory
         return logHistory.get(entryAtDay-1);
     }
+
     public void addEntry(){
 
     }

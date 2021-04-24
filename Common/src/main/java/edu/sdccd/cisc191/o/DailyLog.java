@@ -2,12 +2,24 @@ package edu.sdccd.cisc191.o;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import  edu.sdccd.cisc191.o.Food;
 
-public class DailyLog {
-    String logDate;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+
+/**
+ * This class is used to create an object DailyLog
+ * The class also includes methods to JSON serialize an object of DailyLog
+ * Likewise, it also has a method to deserialize a JSON serialized DailyLog object
+ *
+ */
+public class DailyLog implements Comparator<DailyLog> {
+    int logDate;
     private int dailyCalories = 0;
-    String enteredIngredients; //String or Ingredient?
-    String enteredFoods;       //String or Food?
+    HashMap<String, Double> enteredIngredients; //String or Ingredient?
+    ArrayList<String> enteredFoods;       //String or Food?
 
     @JsonIgnore
     private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -18,23 +30,43 @@ public class DailyLog {
         return objectMapper.readValue(input, DailyLog.class);
     }
 
-
     public void searchFoods(){
-        dailyCalories = 0; //use Food class methods to calculate for real
+        dailyCalories = 0; //use Food class methods to calculate
+        for (String food: enteredFoods) {
+            dailyCalories += Food.calculateCaloriesForFood(food);
+        }
+
     }
     public void searchByIngredients(){
-        dailyCalories = 0;
+        dailyCalories = 0; //use Ingredient class methods to calculate
+        for (String ingredient: enteredIngredients.keySet()) {
+            dailyCalories += Ingredient.calculateCaloriesForIngredient(ingredient,enteredIngredients.get(ingredient));
+        }
     }
     public int getDailyCalories(){
         //if its foods use searchFoods() and return dailyCalories
         //else
         //use ingredients use searchByIngredients() and return dailyCalories
-        return 0;
+        if(enteredFoods.isEmpty()){
+            searchByIngredients();
+        }else{
+            searchFoods();
+        }
+        return dailyCalories;
     }
+
+    public void setLogDate(int logDate){
+        this.logDate = logDate;
+    }
+
 
     @Override
     public String toString() {
-        return String.format(
-                "Daily Calorie amount is %d because you starved today",dailyCalories);
+        return String.format("Daily Calorie amount is %d because you starved today",dailyCalories);
+    }
+
+    @Override
+    public int compare(DailyLog log1, DailyLog log2) {
+        return Integer.compare(log1.getDailyCalories(), log2.getDailyCalories());
     }
 }

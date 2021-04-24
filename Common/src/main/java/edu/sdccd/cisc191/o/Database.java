@@ -1,4 +1,4 @@
-package edu.sdccd.cisc191.o.server;
+package edu.sdccd.cisc191.o;
 
 public abstract class Database {
     private String restaurantFoodDatabase;
