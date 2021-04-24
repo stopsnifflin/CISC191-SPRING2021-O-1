@@ -55,6 +55,7 @@ public class DailyLog implements Comparator<DailyLog> {
         return dailyCalories;
     }
 
+
     public void setLogDate(int logDate){
         this.logDate = logDate;
     }
