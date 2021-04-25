@@ -79,7 +79,7 @@ public class User {
         clientSocket.close();
     }
 
-
+/*  main() COMMENTED OUT
     public static void main(String[] args) {
         User client = new User();
         try {
@@ -90,7 +90,7 @@ public class User {
             e.printStackTrace();
         }
     }
-
+*/
 
     public void editLog(){
         //FIX ME
