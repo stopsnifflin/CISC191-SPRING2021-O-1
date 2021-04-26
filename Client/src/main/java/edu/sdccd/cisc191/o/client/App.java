@@ -35,8 +35,8 @@ public class App {
             System.out.println("Retype password: ");        //replace this with a label in GUI
             userPasswordVeri = scnr.nextLine();             //put this in a text field in GUI
         }
-            System.out.println("Account created successfully");
-            System.out.println("Your username: " + userName);
+            System.out.println("Account created successfully");  //put this in a popup window
+            System.out.println("Your username: " + userName);    //same popup window with the line above
             appUser = new User(userName,userPassword);
             //FIX ME: send appUser to Server to be stored in a User database
     }
